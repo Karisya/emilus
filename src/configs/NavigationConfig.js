@@ -1,83 +1,67 @@
 import { 
   DashboardOutlined, 
-  AppstoreOutlined,
-  FileTextOutlined,
-  PieChartOutlined,
-  EnvironmentOutlined,
-  AntDesignOutlined,
-  SafetyOutlined,
-  StopOutlined,
-  DotChartOutlined,
-  MailOutlined,
-  MessageOutlined,
-  CalendarOutlined,
-  BulbOutlined,
-  InfoCircleOutlined,
-  CompassOutlined,
-  LayoutOutlined,
-  DesktopOutlined,
-  FileDoneOutlined,
-  CommentOutlined,
-  RobotOutlined,
-  PlusCircleOutlined,
-  FundOutlined,
   ShoppingCartOutlined,
-  BookOutlined,
-  FileUnknownOutlined,
-  ProfileOutlined
+  ShoppingOutlined,
+  UserOutlined,
+  AppstoreOutlined,
+  PictureOutlined,
+  GiftOutlined,
+  ShopOutlined,
+  UsergroupAddOutlined,
+  MailOutlined,
 } from '@ant-design/icons';
-import { APP_PREFIX_PATH, AUTH_PREFIX_PATH } from 'configs/AppConfig'
+import { APP_PREFIX_PATH} from 'configs/AppConfig'
 
 
-const dashBoardNavTree = [{
-  key: 'dashboards',
-  path: `${APP_PREFIX_PATH}/dashboards`,
+const mainBordNavTree = [{
+  key: 'mainboards',
+  path: `${APP_PREFIX_PATH}/mainboards`,
   title: 'Основные',
   icon: DashboardOutlined,
   breadcrumb: false,
   submenu: [
     {
-      key: 'dashboards-default',
-      path: `${APP_PREFIX_PATH}/dashboards/default`,
+      key: 'mainboards-default',
+      path: `${APP_PREFIX_PATH}/mainboards/default`,
       title: 'Дашборд',
       icon: DashboardOutlined,
       breadcrumb: false,
       submenu: []
     },
     {
-      key: 'apps-ecommerce',
-      path: `${APP_PREFIX_PATH}/apps/ecommerce`,
+      key: 'mainboards-catalog',
+      path: `${APP_PREFIX_PATH}/mainboards/catalog`,
       title: 'Каталог',
       icon: ShoppingCartOutlined,
       breadcrumb: true,
       submenu: [
         {
-          key: 'apps-ecommerce-productList',
-          path: `${APP_PREFIX_PATH}/apps/ecommerce/product-list`,
+          key: 'mainboards-catalog-products',
+          path: `${APP_PREFIX_PATH}/mainboards/catalog/products`,
           title: 'Товары',
           icon: '',
           breadcrumb: true,
           submenu: []
         },
         {
-          key: 'apps-ecommerce-addProduct',
-          path: `${APP_PREFIX_PATH}/apps/ecommerce/add-product`,
+          key: 'mainboards-catalog-categories',
+          path: `${APP_PREFIX_PATH}/mainboards/catalog/categories`,
           title: 'Категории',
           icon: '',
           breadcrumb: false,
           submenu: []
         },
         {
-          key: 'apps-ecommerce-editProduct',
-          path: `${APP_PREFIX_PATH}/apps/ecommerce/edit-product/12`,
+          key: 'mainboards-catalog-collections',
+          path: `${APP_PREFIX_PATH}/mainboards/catalog/collections`,
           title: 'Коллекции',
           icon: '',
           breadcrumb: false,
           submenu: []
         },
         {
-          key: 'apps-ecommerce-orders',
-          path: `${APP_PREFIX_PATH}/apps/ecommerce/orders`,
+          key: 'mainboards-catalog-combo',
+          path: `${APP_PREFIX_PATH}/mainboards/catalog/combo`,
           title: 'Комбо',
           icon: '',
           breadcrumb: false,
@@ -86,21 +70,95 @@ const dashBoardNavTree = [{
       ]
     },
     {
-      key: 'dashboards-analytic',
-      path: `${APP_PREFIX_PATH}/dashboards/analytic`,
-      title: 'sidenav.dashboard.analytic',
-      icon: DotChartOutlined,
+      key: 'mainboards-orders',
+      path: `${APP_PREFIX_PATH}/mainboards/orders`,
+      title: 'Заказы',
+      icon: ShoppingOutlined,
       breadcrumb: false,
       submenu: []
     },
     {
-      key: 'dashboards-sales',
-      path: `${APP_PREFIX_PATH}/dashboards/sales`,
-      title: 'sidenav.dashboard.sales',
-      icon: FundOutlined,
-      breadcrumb: false,
+      key: 'mainboards-clients',
+      path: `${APP_PREFIX_PATH}/mainboards/clients`,
+      title: 'Клиенты',
+      icon: UserOutlined,
+      breadcrumb: true,
+      submenu: [
+        {
+          key: 'mainboards-clientsList',
+          path: `${APP_PREFIX_PATH}/mainboards/clientsList`,
+          title: 'Список клиентов',
+          icon: '',
+          breadcrumb: true,
+          submenu: []
+        },
+        {
+          key: 'mainboards-clientsGroups',
+          path: `${APP_PREFIX_PATH}/mainboards/clientsGroups`,
+          title: 'Группы клиентов',
+          icon: '',
+          breadcrumb: false,
+          submenu: []
+        },
+      ]
+    },
+    {
+      key: 'mainboards-banners',
+      path: `${APP_PREFIX_PATH}/mainboards/banners`,
+      title: 'Баннеры',
+      icon: PictureOutlined,
+      breadcrumb: true,
       submenu: []
-    }
+    },
+    {
+      key: 'mainboards-promo-codes',
+      path: `${APP_PREFIX_PATH}/mainboards/promo-codes`,
+      title: 'Промокоды',
+      icon: GiftOutlined,
+      breadcrumb: true,
+      submenu: []
+    },
+    {
+      key: 'mainboards-offline-points',
+      path: `${APP_PREFIX_PATH}/mainboards/offline-points`,
+      title: 'Оффлайн точки',
+      icon: ShopOutlined,
+      breadcrumb: true,
+      submenu: [
+        {
+          key: 'mainboards-offline-points-addresses',
+          path: `${APP_PREFIX_PATH}/mainboards/offline-points/addresses`,
+          title: 'Адреса',
+          icon: '',
+          breadcrumb: true,
+          submenu: []
+        },
+        {
+          key: 'mainboards-offline-points-geozones',
+          path: `${APP_PREFIX_PATH}/mainboards/offline-points/geozones`,
+          title: 'Геозоны',
+          icon: '',
+          breadcrumb: true,
+          submenu: []
+        }
+      ]
+    },
+    {
+      key: 'mainboards-employees',
+      path: `${APP_PREFIX_PATH}/mainboards/employees`,
+      title: 'Сотрудники',
+      icon: UsergroupAddOutlined,
+      breadcrumb: true,
+      submenu: []
+    },
+    {
+      key: 'mainboards-newsletters',
+      path: `${APP_PREFIX_PATH}/mainboards/newsletters`,
+      title: 'Рассылки',
+      icon: MailOutlined,
+      breadcrumb: true,
+      submenu: []
+    },
   ]
 }]
 
@@ -111,62 +169,12 @@ const appsNavTree = [{
   icon: AppstoreOutlined,
   breadcrumb: false,
   submenu: [
-    {
-      key: 'apps-mail',
-      path: `${APP_PREFIX_PATH}/apps/mail/inbox`,
-      title: 'sidenav.apps.mail',
-      icon: MailOutlined,
-      breadcrumb: false,
-      submenu: []
-    },
-    {
-      key: 'apps-chat',
-      path: `${APP_PREFIX_PATH}/apps/chat`,
-      title: 'sidenav.apps.chat',
-      icon: MessageOutlined,
-      breadcrumb: false,
-      submenu: []
-    },
-    {
-      key: 'apps-calendar',
-      path: `${APP_PREFIX_PATH}/apps/calendar`,
-      title: 'sidenav.apps.calendar',
-      icon: CalendarOutlined,
-      breadcrumb: true,
-      submenu: []
-    },
-    {
-      key: 'apps-project',
-      path: `${APP_PREFIX_PATH}/apps/project`,
-      title: 'sidenav.apps.project',
-      icon: BulbOutlined,
-      breadcrumb: true,
-      submenu: [
-        {
-          key: 'apps-project-list',
-          path: `${APP_PREFIX_PATH}/apps/project/list`,
-          title: 'sidenav.apps.project.list',
-          icon: '',
-          breadcrumb: false,
-          submenu: []
-        },
-        {
-          key: 'apps-project-scrumboard',
-          path: `${APP_PREFIX_PATH}/apps/project/scrumboard`,
-          title: 'sidenav.apps.project.scrumboard',
-          icon: '',
-          breadcrumb: false,
-          submenu: []
-        }
-      ]
-    },
-   
   ]
 }]
 
 
 const navigationConfig = [
-  ...dashBoardNavTree,
+  ...mainBordNavTree,
   ...appsNavTree,
 
 
