@@ -9,6 +9,9 @@ import {
   ShopOutlined,
   UsergroupAddOutlined,
   MailOutlined,
+  SettingOutlined,
+  MobileOutlined,
+  FileTextOutlined,
 } from '@ant-design/icons';
 import { APP_PREFIX_PATH} from 'configs/AppConfig'
 
@@ -162,20 +165,44 @@ const mainBordNavTree = [{
   ]
 }]
 
-const appsNavTree = [{
-  key: 'apps',
-  path: `${APP_PREFIX_PATH}/apps`,
+const systemNavTree = [{
+  key: 'system',
+  path: `${APP_PREFIX_PATH}/system`,
   title: 'системные',
   icon: AppstoreOutlined,
   breadcrumb: false,
   submenu: [
+    {
+      key: 'system-settings',
+      path: `${APP_PREFIX_PATH}/system/settings`,
+      title: 'Настройки',
+      icon: SettingOutlined,
+      breadcrumb: true,
+      submenu: []
+    },
+    {
+      key: 'system-mobile-apps',
+      path: `${APP_PREFIX_PATH}/system/mobile-apps`,
+      title: 'Мобильные приложения',
+      icon: MobileOutlined,
+      breadcrumb: true,
+      submenu: []
+    },
+    {
+      key: 'system-logs',
+      path: `${APP_PREFIX_PATH}/system/logs`,
+      title: 'Логи',
+      icon: FileTextOutlined,
+      breadcrumb: true,
+      submenu: []
+    }
   ]
 }]
 
 
 const navigationConfig = [
   ...mainBordNavTree,
-  ...appsNavTree,
+  ...systemNavTree,
 
 
 ]
