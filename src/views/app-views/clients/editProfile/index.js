@@ -3,27 +3,27 @@ import { useParams, useHistory } from 'react-router-dom';
 import { Form, Input, Button, Spin, message } from 'antd';
 
 function EditProfile() {
-  const { id } = useParams(); // Получаем id пользователя из URL
-  const history = useHistory(); // Для перенаправления на другой маршрут
-  const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [formData, setFormData] = useState({
+    const { id } = useParams(); 
+    const history = useHistory(); 
+    const [user, setUser] = useState(null);
+	const [loading, setLoading] = useState(true);
+	const [formData, setFormData] = useState({
     name: '',
     email: '',
     phone: ''
-  });
+});
 
-  useEffect(() => {
-    console.log("Fetching data for user ID:", id); // Логируем id
+	useEffect(() => {
+    console.log("Fetching data for user ID:", id); 
     fetch(`https://jsonplaceholder.typicode.com/users/${id}`)
-      .then((response) => {
+        .then((response) => {
         if (!response.ok) {
-          throw new Error('Failed to fetch');
+        	throw new Error('Failed to fetch');
         }
         return response.json();
-      })
-      .then((data) => {
-        console.log("User data:", data); // Логируем полученные данные
+    })
+    	.then((data) => {
+        console.log("User data:", data); 
         setUser(data);
         setFormData({
           name: data.name,
@@ -33,7 +33,7 @@ function EditProfile() {
         setLoading(false);
       })
       .catch((error) => {
-        console.error("Error fetching user data:", error); // Логируем ошибку
+        console.error("Error fetching user data:", error); 
         setLoading(false);
       });
   }, [id]);
@@ -47,24 +47,15 @@ function EditProfile() {
   };
 
   const handleSave = () => {
-    setLoading(true); // Включаем лоадер
+    setLoading(true); 
 
-    // Имитируем отправку данных на сервер
     setTimeout(() => {
-      // Допустим, что данные успешно отправлены
       console.log("Updated user data:", formData);
-
-      // Показываем сообщение об успешном сохранении
       message.success('Changes saved successfully');
-
-      // Останавливаем лоадер
       setLoading(false);
-
-      // Перенаправляем на страницу списка пользователей
       history.push('/app/clients/clientsList');
-    }, 2000); // Имитируем задержку в 2 секунды
+    }, 2000); 
   };
-
   if (loading) {
     return <Spin size="large" />;
   }
