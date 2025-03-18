@@ -1,26 +1,44 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDrop, useDrag } from 'react-dnd';
 
-const Board = ({ setObjects }) => {
+const Board = ({ placedObjects, setObjects }) => {
   const [boardObjects, setBoardObjects] = useState([]);
+
+  useEffect(() => {
+    setBoardObjects(placedObjects);
+  }, [placedObjects]);
 
   const [{ isOver }, drop] = useDrop({
     accept: 'object',
     drop: (item, monitor) => {
       const offset = monitor.getClientOffset();
+      const boardX = offset.x - 500; 
+      const boardY = offset.y - 100;
 
-      const boardX = offset.x - 500;  
-      const boardY = offset.y-100  ;   
+      const existingObjectIndex = boardObjects.findIndex(
+        (obj) => obj.id === item.id
+      );
 
-      const newObject = {
-        ...item,
-        id: `${item.id}-${new Date().getTime()}`,
-        x: boardX,  
-        y: boardY,  
-      };
-
-      setBoardObjects((prev) => [...prev, newObject]);
-      setObjects((prev) => [...prev, newObject]);
+      if (existingObjectIndex !== -1) {
+        const updatedObjects = [...boardObjects];
+        updatedObjects[existingObjectIndex] = {
+          ...updatedObjects[existingObjectIndex],
+          x: boardX,
+          y: boardY,
+        };
+        setBoardObjects(updatedObjects);
+        setObjects(updatedObjects);
+      } else {
+        const newObject = {
+          ...item,
+          id: `${item.id}-${new Date().getTime()}`,
+          x: boardX,
+          y: boardY,
+        };
+        const updatedObjects = [...boardObjects, newObject];
+        setBoardObjects(updatedObjects);
+        setObjects(updatedObjects);
+      }
     },
     collect: (monitor) => ({
       isOver: monitor.isOver(),
@@ -43,7 +61,7 @@ const Board = ({ setObjects }) => {
         height: '500px',
         border: '2px solid black',
         position: 'relative',
-        backgroundColor: isOver ? 'lightgreen' : 'white',
+        backgroundColor: isOver ? 'lightgreen' : 'black',
       }}
     >
       {boardObjects.map((obj) => (
@@ -60,7 +78,7 @@ const Board = ({ setObjects }) => {
 const MovableObject = ({ obj, moveObject }) => {
   const [{ isDragging }, drag] = useDrag({
     type: 'object',
-    item: obj,
+    item: { id: obj.id, x: obj.x, y: obj.y }, 
     collect: (monitor) => ({
       isDragging: monitor.isDragging(),
     }),
@@ -85,7 +103,6 @@ const MovableObject = ({ obj, moveObject }) => {
           width: '100px',
           height: '100px',
           objectFit: 'contain',
-          cursor: 'move',
         }}
       />
     </div>
