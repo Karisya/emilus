@@ -89,7 +89,7 @@ const mainBordNavTree = [{
       submenu: [
         {
           key: 'mainboards-clientsList',
-          path: `${APP_PREFIX_PATH}/mainboards/clientsList`,
+          path: `${APP_PREFIX_PATH}/clients/clientsList`,
           title: 'Список клиентов',
           icon: '',
           breadcrumb: true,
@@ -97,7 +97,7 @@ const mainBordNavTree = [{
         },
         {
           key: 'mainboards-clientsGroups',
-          path: `${APP_PREFIX_PATH}/mainboards/clientsGroups`,
+          path: `${APP_PREFIX_PATH}/clients/clientsGroups`,
           title: 'Группы клиентов',
           icon: '',
           breadcrumb: false,
