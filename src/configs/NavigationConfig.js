@@ -1,5 +1,6 @@
 import { 
   DashboardOutlined, 
+  SignatureOutlined,
   ShoppingCartOutlined,
   ShoppingOutlined,
   UserOutlined,
@@ -28,6 +29,14 @@ const mainBordNavTree = [{
       path: `${APP_PREFIX_PATH}/mainboards/default`,
       title: 'Дашборд',
       icon: DashboardOutlined,
+      breadcrumb: false,
+      submenu: []
+    },
+    {
+      key: 'mainboards-planner',
+      path: `${APP_PREFIX_PATH}/mainboards/planner`,
+      title: 'Планировщик',
+      icon: SignatureOutlined ,
       breadcrumb: false,
       submenu: []
     },
